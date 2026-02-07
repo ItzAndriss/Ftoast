@@ -33,7 +33,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          # Ez az útvonal a legvalószínűbb hibaforrás:
+          path: docs/.vitepress/dist
 
   deploy:
     environment:
