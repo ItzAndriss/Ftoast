@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FToast Demo</title>
+  <link rel="stylesheet" href="/assets/css/demo.css"/>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+  <nav class="border-b border-[var(--vp-c-divider)] bg-[var(--vp-c-bg)] sticky top-0 z-50 px-6 py-4 backdrop-blur-sm bg-opacity-90">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-xl font-bold tracking-tight">FToast<span class="text-[var(--vp-c-brand)]">Docs</span></span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button id="toggleTheme" class="icon-btn" title="Toggle Theme">
+          <!-- icon injected by JS -->
+          <span id="themeIcon" class="inline-flex"></span>
+        </button>
+
+        <a href="#" class="hidden md:block text-sm font-medium text-[var(--vp-c-text-1)] hover:text-[var(--vp-c-brand)] transition-colors">
+          GitHub
+        </a>
+
+        <a href="/" class="btn-brand px-4 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow p-6 md:p-12 max-w-7xl mx-auto w-full">
+
+    <header class="mb-12 border-b border-[var(--vp-c-divider)] pb-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+        FToast Demo <span class="text-[var(--vp-c-brand)]">Playground</span>
+      </h1>
+      <p class="text-xl text-[var(--vp-c-text-2)] max-w-3xl leading-relaxed">
+        A modern, lightweight notification system. Toasts, Actions, Dialogs, i18n support, and persistence in one package.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <section class="lg:col-span-8 space-y-8">
+
+        <div class="vp-card rounded-xl p-6 transition-all hover:border-[var(--vp-c-brand)]/30">
+          <h2 class="text-xl font-bold mb-2">Toast Types</h2>
+          <p class="text-sm text-[var(--vp-c-text-2)] mb-6">Demonstrating basic feedback types and styles.</p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <button id="btnSuccess" class="px-4 py-2 rounded-lg font-medium text-white bg-emerald-500 hover:bg-emerald-600 transition-colors shadow-sm">
+              Success
+            </button>
+            <button id="btnInfo" class="px-4 py-2 rounded-lg font-medium text-white bg-[var(--vp-c-brand)] hover:bg-[var(--vp-c-brand-dark)] transition-colors shadow-sm">
+              Info
+            </button>
+            <button id="btnWarn" class="px-4 py-2 rounded-lg font-medium text-white bg-amber-500 hover:bg-amber-600 transition-colors shadow-sm">
+              Warning
+            </button>
+            <button id="btnError" class="px-4 py-2 rounded-lg font-medium text-white bg-rose-500 hover:bg-rose-600 transition-colors shadow-sm">
+              Error
+            </button>
+          </div>
+
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button id="btnActions" class="btn-secondary px-4 py-2 rounded-lg font-medium transition-all text-sm shadow-sm">
+              Toast Actions
+            </button>
+            <button id="btnSticky" class="btn-secondary px-4 py-2 rounded-lg font-medium transition-all text-sm shadow-sm">
+              Sticky (No AutoClose)
+            </button>
+            <button id="btnSpam" class="btn-secondary px-4 py-2 rounded-lg font-medium transition-all text-sm shadow-sm">
+              Dedupe Test
+            </button>
+          </div>
+        </div>
+
+        <div class="vp-card rounded-xl p-6 transition-all hover:border-[var(--vp-c-brand)]/30">
+          <h2 class="text-xl font-bold mb-2">Dialogs</h2>
+          <p class="text-sm text-[var(--vp-c-text-2)] mb-6">Asynchronous, Promise-based modal windows (SweetAlert style).</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button id="btnAlert" class="btn-secondary px-4 py-2 rounded-lg font-medium transition-all shadow-sm">
+              alert()
+            </button>
+            <button id="btnConfirm" class="btn-secondary px-4 py-2 rounded-lg font-medium transition-all shadow-sm">
+              confirm()
+            </button>
+            <button id="btnPrompt" class="btn-secondary px-4 py-2 rounded-lg font-medium transition-all shadow-sm">
+              prompt()
+            </button>
+          </div>
+        </div>
+
+        <div class="rounded-lg bg-[var(--vp-c-bg-alt)] border border-[var(--vp-c-brand)]/20 p-4 flex gap-4">
+          <div class="text-[var(--vp-c-brand)] mt-0.5">
+            <!-- info icon (inline) -->
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-[var(--vp-c-text-1)]">Developer Tip</p>
+            <p class="text-sm text-[var(--vp-c-text-2)] mt-1 leading-relaxed">
+              Configure globally via <span class="kbd">FToast.config()</span>, override per call, and test quickly with the panel.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <aside class="lg:col-span-4 space-y-6">
+
+        <div class="vp-card rounded-xl p-5 space-y-5 sticky top-28 shadow-sm">
+          <h3 class="font-bold text-lg border-b border-[var(--vp-c-divider)] pb-2">Configuration</h3>
+
+          <div>
+            <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1.5 uppercase tracking-wide">Position</label>
+            <select id="position" class="vp-input w-full px-3 py-2 rounded-lg text-sm">
+              <option value="top-right">top-right</option>
+              <option value="top-left">top-left</option>
+              <option value="bottom-right">bottom-right</option>
+              <option value="bottom-left">bottom-left</option>
+              <option value="top-center">top-center</option>
+              <option value="bottom-center">bottom-center</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1.5 uppercase tracking-wide">Duration (ms)</label>
+              <input id="duration" type="number" min="0" step="100" value="4200"
+                     class="vp-input w-full px-3 py-2 rounded-lg text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1.5 uppercase tracking-wide">Max Toasts</label>
+              <input id="maxToasts" type="number" min="1" max="10" value="5"
+                     class="vp-input w-full px-3 py-2 rounded-lg text-sm" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1.5 uppercase tracking-wide">Dedupe Window</label>
+              <input id="dupeMs" type="number" min="0" step="100" value="1200"
+                     class="vp-input w-full px-3 py-2 rounded-lg text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1.5 uppercase tracking-wide">Lang Key</label>
+              <input id="storageKey" type="text" value="site_lang"
+                     class="vp-input w-full px-3 py-2 rounded-lg text-sm" />
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-2">
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="text-sm text-[var(--vp-c-text-1)] group-hover:text-[var(--vp-c-brand)] transition-colors">Newest on Top</span>
+              <input id="newestOnTop" type="checkbox" class="accent-[var(--vp-c-brand)]" checked />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="text-sm text-[var(--vp-c-text-1)] group-hover:text-[var(--vp-c-brand)] transition-colors">Show Progress</span>
+              <input id="showProgress" type="checkbox" class="accent-[var(--vp-c-brand)]" checked />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="text-sm text-[var(--vp-c-text-1)] group-hover:text-[var(--vp-c-brand)] transition-colors">Pause on Hover</span>
+              <input id="pauseOnHover" type="checkbox" class="accent-[var(--vp-c-brand)]" checked />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="text-sm text-[var(--vp-c-text-1)] group-hover:text-[var(--vp-c-brand)] transition-colors">Close on Click</span>
+              <input id="closeOnClick" type="checkbox" class="accent-[var(--vp-c-brand)]" checked />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="text-sm text-[var(--vp-c-text-1)] group-hover:text-[var(--vp-c-brand)] transition-colors">Prevent Duplicates</span>
+              <input id="preventDuplicates" type="checkbox" class="accent-[var(--vp-c-brand)]" checked />
+            </label>
+          </div>
+
+          <div class="border-t border-[var(--vp-c-divider)] pt-4">
+            <h4 class="font-bold text-xs uppercase tracking-wide text-[var(--vp-c-text-2)] mb-3">i18n & Storage</h4>
+
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <select id="lang" class="vp-input w-full px-2 py-1.5 rounded-lg text-sm">
+                <option value="auto">Lang: Auto</option>
+                <option value="hu">Lang: HU</option>
+                <option value="en">Lang: EN</option>
+              </select>
+
+              <select id="storageType" class="vp-input w-full px-2 py-1.5 rounded-lg text-sm">
+                <option value="local">Local</option>
+                <option value="session">Session</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+
+            <div class="flex gap-2">
+              <button id="applyLang" class="flex-1 btn-brand py-1.5 rounded-lg text-xs font-bold uppercase tracking-wide opacity-90 hover:opacity-100">
+                Save
+              </button>
+              <button id="showLang" class="px-3 btn-secondary rounded-lg text-xs font-bold">
+                Log
+              </button>
+            </div>
+          </div>
+
+          <!-- NEW: Theme & storage like lang -->
+          <div class="border-t border-[var(--vp-c-divider)] pt-4">
+            <h4 class="font-bold text-xs uppercase tracking-wide text-[var(--vp-c-text-2)] mb-3">Theme & Storage</h4>
+
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <select id="theme" class="vp-input w-full px-2 py-1.5 rounded-lg text-sm">
+                <option value="auto">Theme: Auto</option>
+                <option value="light">Theme: Light</option>
+                <option value="dark">Theme: Dark</option>
+              </select>
+
+              <select id="themeStorageType" class="vp-input w-full px-2 py-1.5 rounded-lg text-sm">
+                <option value="local">Local</option>
+                <option value="session">Session</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <div>
+                <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1 uppercase tracking-wide">Theme Key</label>
+                <input id="themeStorageKey" type="text" value="site_theme"
+                       class="vp-input w-full px-3 py-2 rounded-lg text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-1 uppercase tracking-wide">Apply</label>
+                <button id="applyTheme" class="w-full btn-brand py-2 rounded-lg text-xs font-bold uppercase tracking-wide opacity-90 hover:opacity-100">
+                  Save
+                </button>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <button id="showTheme" class="flex-1 btn-secondary py-2 rounded-lg text-xs font-bold">
+                Log Theme
+              </button>
+              <button id="resetTheme" class="flex-1 btn-secondary py-2 rounded-lg text-xs font-bold">
+                Clear Stored
+              </button>
+            </div>
+          </div>
+
+          <div class="border-t border-[var(--vp-c-divider)] pt-4">
+            <label class="block text-xs font-bold text-[var(--vp-c-text-2)] mb-2 uppercase tracking-wide">Theme Preset</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button id="presetGlass" class="btn-secondary py-1.5 rounded-md text-xs transition-transform active:scale-95">Glass</button>
+              <button id="presetSolid" class="btn-secondary py-1.5 rounded-md text-xs transition-transform active:scale-95">Solid</button>
+              <button id="presetReset" class="btn-secondary py-1.5 rounded-md text-xs transition-transform active:scale-95">Reset</button>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/assets/js/ftoast.js"></script>
+  <script src="/assets/js/ftoast.demo.js"></script>
+</body>
+</html>
