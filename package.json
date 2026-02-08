@@ -1,0 +1,19 @@
+{
+  "name": "ftoast",
+  "version": "1.0.0",
+  "description": "Lightweight toast + dialog system with i18n and theme support",
+  "main": "dist/ftoast.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "toast",
+    "notification",
+    "dialog",
+    "tailwind",
+    "i18n"
+  ],
+  "license": "MIT"
+}
