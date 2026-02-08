@@ -1,5 +1,7 @@
 # FToast
 
+[![](https://data.jsdelivr.com/v1/package/npm/ftoast/badge)](https://www.jsdelivr.com/package/npm/ftoast)
+
 Lightweight toast + dialog system with **i18n**, **light/dark/auto theme**, and **SweetAlert-like dialogs**.
 
 No dependencies. Tailwind-first. FontAwesome not required.
